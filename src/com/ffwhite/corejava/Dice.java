@@ -8,14 +8,20 @@ import java.util.Random;
 
 /**
  * @author forest white
- * Dice generates a random integer from a minimum integer to a maximum integer inclusive. 
- * TODO: Not yet serialized, so not safe for
- * concurrent access.
+ * Dice generates random integers like dice 
+ * TODO: Not yet serialized, so not safe for concurrent access.
  */
 public class Dice {
 
     private static final Random generator = new Random();
 
+    /**
+     * Returns the result of one die roll that has an equal chance of resulting
+     * in a number between the minimum and maximum values, inclusive.
+     * @param min minimum number on the die, inclusive
+     * @param max maximum number on the die, inclusive
+     * @return result of one roll
+     */
     public static int roll(int min, int max) {
         return min + generator.nextInt(max - min + 1);
     }
