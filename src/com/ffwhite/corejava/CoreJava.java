@@ -15,7 +15,8 @@ public class CoreJava {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        int result = Dice.roll(1,6);
+        System.out.println("Your roll was " + result + ".");
     }
     
 }

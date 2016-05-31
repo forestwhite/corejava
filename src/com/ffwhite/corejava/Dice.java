@@ -16,7 +16,7 @@ public class Dice {
 
     private static final Random generator = new Random();
 
-    public static int nextRoll(int min, int max) {
+    public static int roll(int min, int max) {
         return min + generator.nextInt(max - min + 1);
     }
 }
