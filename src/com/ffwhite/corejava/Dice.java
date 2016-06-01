@@ -7,8 +7,9 @@ package com.ffwhite.corejava;
 import java.util.Random;
 
 /**
+ * Dice generates random integers in a fashion similar to dice.
+ * 
  * @author forest white
- * Dice generates random integers like dice 
  * TODO: Not yet serialized, so not safe for concurrent access.
  */
 public class Dice {
@@ -18,6 +19,7 @@ public class Dice {
     /**
      * Returns the result of one die roll that has an equal chance of resulting
      * in a number between the minimum and maximum values, inclusive.
+     * 
      * @param min minimum number on the die, inclusive
      * @param max maximum number on the die, inclusive
      * @return result of one roll
