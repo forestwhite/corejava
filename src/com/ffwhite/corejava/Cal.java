@@ -6,10 +6,8 @@ package com.ffwhite.corejava;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.time.Year;
 import java.time.format.TextStyle;
 import java.util.Locale;
-import java.lang.Math;
 
 /**
  * Cal reproduces the UNIX Cal command with some style changes
@@ -33,6 +31,7 @@ public class Cal {
 
     /**
      * Cal constructor for a specific year
+     *
      * @param year
      */
     public Cal(int year) {
@@ -41,32 +40,53 @@ public class Cal {
     }
 
     /**
+     * Cal constructor for a specific month and year
+     *
+     * @param month
+     * @param year
+     */
+    public Cal(int month, int year) {
+        this.date = LocalDate.of(year, month, 1);
+        this.now = false;
+    }
+
+    /**
      * Prints calendar output to the console
      */
     public void printCal() {
-        if (now) {
-            int padding;
-            padding = 28-(23
+        int padding;
+        padding = 28 - (23
                 - date.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH)
-                        .length())/ 2;
-            String monthYear;
-            monthYear = PadString.padLeft(
-                    date.getMonth() + " " + date.getYear(), padding);
-            System.out.println(monthYear);
-            System.out.println("  Su  Mo  Tu  We  Th  Fr  Sa");
-            int weekday = date.getDayOfWeek().getValue()%7;
-            for(int i = 0; i < weekday; i++)
-                System.out.print("    ");
-            while (date.getMonthValue() == LocalDate.now().getMonthValue()){
+                .length()) / 2;
+        String monthYear;
+        monthYear = PadString.padLeft(
+                date.getMonth() + " " + date.getYear(), padding);
+        System.out.println(monthYear);
+        System.out.println("  Su  Mo  Tu  We  Th  Fr  Sa");
+        int weekday = date.getDayOfWeek().getValue() % 7;
+        for (int i = 0; i < weekday; i++) {
+            System.out.print("    ");
+        }
+        if (now) {
+            while (date.getMonthValue() == LocalDate.now().getMonthValue()) {
                 System.out.printf("%4d", date.getDayOfMonth());
                 date = date.plusDays(1);
-                if (date.getDayOfWeek().getValue()%7 == 0)
+                if (date.getDayOfWeek().getValue() % 7 == 0) {
                     System.out.println();
+                }
             }
             System.out.println();
         } else {
-            System.out.println("Not implemented");
-            //TODO: Implement full year and month-year output
+            int monthValue = date.getMonthValue();
+            while (date.getMonthValue() == monthValue) {
+                System.out.printf("%4d", date.getDayOfMonth());
+                date = date.plusDays(1);
+                if (date.getDayOfWeek().getValue() % 7 == 0) {
+                    System.out.println();
+                }
+            }
+            System.out.println();
+            //TODO: Implement full year output
         }
     }
 }

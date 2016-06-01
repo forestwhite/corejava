@@ -20,8 +20,12 @@ public class CoreJava {
     public static void main(String[] args) {
         int result = Dice.roll(1,6);
         System.out.println("Your roll was " + result + ".");
+        System.out.println("This month's calendar:");
         Cal thismonth = new Cal();
         thismonth.printCal();
+        System.out.println("Calendar for an older date:");
+        Cal oldMonth = new Cal(9,1752);
+        oldMonth.printCal();
     }
     
 }
