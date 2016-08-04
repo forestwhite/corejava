@@ -10,7 +10,7 @@ import java.util.Random;
  * Dice generates random integers in a fashion similar to dice.
  * 
  * @author forest white
- * TODO: Not yet serialized, so not safe for concurrent access.
+ * TODO: Not yet serialized, so not safe for concurrent rolling.
  */
 public class Dice {
 
@@ -25,6 +25,12 @@ public class Dice {
      * @return result of one roll
      */
     public static int roll(int min, int max) {
-        return min + generator.nextInt(max - min + 1);
+        try{
+            return min + generator.nextInt(max - min + 1);
+        }
+        catch(IllegalArgumentException e){
+            System.out.println("max must be greater than min for die roll.");
+            return 0;
+        }
     }
 }
