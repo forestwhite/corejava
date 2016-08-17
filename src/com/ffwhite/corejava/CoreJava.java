@@ -39,5 +39,7 @@ public class CoreJava {
             + Arrays.toString(QuadraticEquation.getRoots(1,-3,1)));
         System.out.println("For complex roots, quadratic formula result: "
             + Arrays.toString(QuadraticEquation.getRoots(5,1,5)));
+        System.out.println("All the prime numbers up to 100 are: "
+            + Arrays.toString(PrimeCalculator.getPrimes(100)));
     }
 }
